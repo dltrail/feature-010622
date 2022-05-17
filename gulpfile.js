@@ -14,7 +14,7 @@ const tsProject = ts.createProject("tsconfig.json");
 
 gulp.task("watch", async function () {
   gulp.watch("src/scss/*.scss", gulp.series(["sass"]));
-  gulp.watch("src/js/*.js", gulp.series(["js"]));
+  gulp.watch("dist/js/*.js", gulp.series(["js"]));
   gulp.watch("src/index.html");
 });
 
@@ -29,42 +29,45 @@ gulp.task("processCSS", async function () {
     .pipe(postcss([require("autoprefixer")]))
     .pipe(sourcemaps.write("."))
     .pipe(gulpIf("*.css", cssnano()))
-    .pipe(gulp.dest("dist/css"));
+    .pipe(gulp.dest("build/css"));
 });
 
-gulp.task("js", function () {
-  return gulp
-    .src("src/js/*.js")
-    .pipe(babel())
-    .pipe(uglify())
-    .pipe(gulp.dest("dist/js"));
-});
 
-gulp.task("uglify", async function () {
-  gulp.src("src/js/*.js").pipe(uglify()).pipe(gulp.dest("dist/js/*.js"));
-  gulp.src("src/*.css").pipe(uglify()).pipe(gulp.dest("dist/css"));
-});
 
-gulp.task("js", function () {
-  return gulp.src("src/js/*.js").pipe(babel()).pipe(gulp.dest("dist/js"));
-});
 
-gulp.task("processJS", async function () {
-  return gulp
-    .src("dist/js/*.js")
-    .pipe(browserify())
-    .pipe(uglify())
-    .pipe(gulp.dest("dist/js"));
-});
+// gulp.task("processJS", async function () {
+//   return gulp
+//     .src("src/js/*.js")
+//     .pipe(browserify())
+//     .pipe(uglify())
+//     .pipe(gulp.dest("dist/js"));
+// });
+
+
 
 gulp.task('ts', async function () {
   return tsProject
     .src("src/ts.*.ts")
     .pipe(tsProject())
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('dist/js'));
 });
+
+gulp.task("uglify", async function () {
+  gulp.src("dist/js/*.js").pipe(uglify()).pipe(gulp.dest("build/js"));
+  gulp.src("dist/css/*.css").pipe(uglify()).pipe(gulp.dest("build/css"));
+});
+
+gulp.task("js", function () {
+  return gulp
+    .src("dist/js/*.js")
+    .pipe(babel())
+    .pipe(uglify())
+    .pipe(gulp.dest("build/js"));
+});
+
+
 
 gulp.task(
   "build",
-  gulp.series(["watch", "sass", "processCSS", "ts", "processJS"])
+  gulp.series(["watch", "sass", "processCSS", "ts", "js"])
 );
