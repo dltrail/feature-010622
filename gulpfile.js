@@ -1,6 +1,5 @@
 const gulp = require("gulp");
 const gulpIf = require("gulp-if");
-
 const sass = require("gulp-sass")(require("sass"));
 const uglify = require("gulp-uglify");
 const postcss = require("gulp-postcss");
@@ -9,6 +8,9 @@ const sourcemaps = require("gulp-sourcemaps");
 const cssnano = require("gulp-cssnano");
 const babel = require("gulp-babel");
 const browserify = require("gulp-browserify");
+const ts = require("gulp-typescript");
+
+const tsProject = ts.createProject("tsconfig.json");
 
 gulp.task("watch", async function () {
   gulp.watch("src/scss/*.scss", gulp.series(["sass"]));
@@ -55,7 +57,14 @@ gulp.task("processJS", async function () {
     .pipe(gulp.dest("dist/js"));
 });
 
+gulp.task('ts', async function () {
+  return tsProject
+    .src("src/ts.*.ts")
+    .pipe(tsProject())
+    .pipe(gulp.dest('build'));
+});
+
 gulp.task(
   "build",
-  gulp.series(["watch", "sass", "processCSS", "js", "processJS"])
+  gulp.series(["watch", "sass", "processCSS", "ts", "processJS"])
 );

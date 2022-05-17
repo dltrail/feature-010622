@@ -1,0 +1,14 @@
+{
+    "include": ["./src/ts"],
+ 
+    "compilerOptions": {
+      "outDir": "./build",
+      "module": "commonjs" 
+
+    },
+    "strictNullChecks": true,
+   
+    "exclude": [
+        "node_modules/*"
+      ]
+}
