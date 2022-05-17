@@ -33,12 +33,6 @@ const useProductCarousel = () => {
 
 }
 
-
-
-
-useProductCarousel()
-
-
 let mbVids = document.querySelectorAll(".videoMobile");   
 let dtVids =  document.querySelectorAll(".videoDesktop"); 
 const handleVideo = () => {
@@ -58,9 +52,12 @@ const handleVideo = () => {
         dtVids.forEach(dtvid =>{
             dtvid.style.display = "block"; 
         }) 
-    
     }
 }
-// document.addEventListener("ready", handleVideo);
+
+// Swap video + image URL instead of switching display setting here? (tbr) 
 handleVideo()
+useProductCarousel()
+
+
 window.addEventListener("resize", handleVideo);
