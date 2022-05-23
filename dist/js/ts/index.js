@@ -1,34 +1,16 @@
 "use strict";
+var firstName = "Dylan"; // type string
+console.log(typeof firstName);
 var useProductCarousel = function () {
     $(".product-carousel__carousel").slick({
         slidesToScroll: 1,
-        slidesToShow: 4.5,
+        slidesToShow: 2.5,
         swipeToSlide: true,
         infinite: true,
         swipe: true,
         arrows: true,
         prevArrow: $(".prev-arrow"),
         nextArrow: $(".next-arrow"),
-        responsive: [
-            {
-                breakpoint: 767,
-                settings: {
-                    slidesToShow: 2.23,
-                },
-            },
-            {
-                breakpoint: 1023,
-                settings: {
-                    slidesToShow: 3.5,
-                },
-            },
-            {
-                breakpoint: 1279,
-                settings: {
-                    slidesToShow: 3.5,
-                },
-            },
-        ],
     });
 };
 var mbVids = document.querySelectorAll(".videoMobile");
@@ -51,7 +33,7 @@ var handleVideo = function () {
         });
     }
 };
-// Swap video + image URL instead of switching display setting here? (tbr)
+// Swap video + image URL instead of switching display setting here? (tbr) 
 handleVideo();
 useProductCarousel();
 window.addEventListener("resize", handleVideo);
