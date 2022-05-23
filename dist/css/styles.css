@@ -291,6 +291,9 @@ body article#as-feature-010622 div.product-carousel .mobile-only {
     display: none;
   }
 }
+body article#as-feature-010622 div.product-carousel .slick-list {
+  padding: 0 20% 0 0;
+}
 body article#as-feature-010622 div.product-carousel .slick-arrow {
   top: 46%;
 }

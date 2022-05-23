@@ -14,6 +14,7 @@ const tsProject = ts.createProject("tsconfig.json");
 
 gulp.task("watch", async function () {
   gulp.watch("src/scss/*.scss", gulp.series(["sass"]));
+  gulp.watch("src/ts/*.ts", gulp.series(["ts"]));
   gulp.watch("dist/js/*.js", gulp.series(["js"]));
   gulp.watch("src/index.html");
 });
@@ -64,8 +65,6 @@ gulp.task("js", function () {
     .pipe(uglify())
     .pipe(gulp.dest("build/js"));
 });
-
-
 
 gulp.task(
   "build",

@@ -3,7 +3,13 @@ console.log(typeof firstName);
 var useProductCarousel = function () {
     $(".product-carousel__carousel").slick({
         slidesToScroll: 1,
-        swipeToSlide: true
+        slidesToShow: 2.5,
+        swipeToSlide: true,
+        infinite: true,
+        swipe: true,
+        arrows: true,
+        prevArrow: $(".prev-arrow"),
+        nextArrow: $(".next-arrow")
     });
 };
 var mbVids = document.querySelectorAll(".videoMobile");
