@@ -1,0 +1,82 @@
+.usp-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 61px;
+  border-top: 1px solid #979797;
+  width: 95vw;
+  margin: 61px auto;
+
+  @media screen and (min-width: 768px) {
+    padding: 35px 0 49px;
+
+  }
+
+  @media screen and (min-width: 1920px) {
+    padding: 49px 0 0;
+
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &>div {
+    width: 50%;
+    height: fit-content;
+    margin-top: 49px;
+
+    @media screen and (min-width: 768px) {
+      width: 25%;
+      margin-top: 0;
+    }
+
+    &.no-show {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      max-width: 70px;
+      margin: auto;
+      display: block;
+
+      @media screen and (min-width: 1440px) {
+        max-width: 105px;
+      }
+    }
+
+    span {
+      font-family: 'UntitledSans Medium';
+      font-size: 10px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.38;
+      letter-spacing: 1.3px;
+      text-align: center;
+      display: block;
+      text-transform: uppercase;
+      width: 75%;
+      margin: auto;
+      color: black;
+      text-decoration: none;
+
+      @media screen and (min-width: 375px) {
+        font-size: 13px;
+      }
+
+      @media screen and (min-width: 500px) {
+        width: 59%;
+      }
+
+      @media screen and (min-width: 768px) {
+        width: 80%;
+      }
+
+      @media screen and (min-width: 900px) {
+        width: 100%;
+      }
+    }
+  }
+}
