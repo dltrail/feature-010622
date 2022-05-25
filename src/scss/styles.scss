@@ -551,9 +551,13 @@ body {
           //   }
           // }
 
-          // .slick-list {
-          // margin-left:-10px;
-          // }
+          .slick-list {
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            display: block;
+            position: relative;
+          }
 
           .slick-arrow {
             top: 46%;
@@ -595,6 +599,7 @@ body {
           margin: auto;
           text-align: center;
           margin: var(--verticalSpacerXL) auto;
+          margin-top: calc(var(--verticalSpacerXL) - 12px);
 
           * {
             font-weight: normal;
